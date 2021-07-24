@@ -1,0 +1,30 @@
+
+
+<h1 class="text-center"> Reactive Form</h1>
+
+<div class="container-fluid">
+<form #userform = "ngForm" [formGroup]="usergroup">
+<div class="form-group col-sm-6 my-3">
+    <label>UserName :</label>
+    <input type="text" class="form-control" formControlName="Namegp">
+    <span class="text-danger" 
+    *ngIf="usergroup.get('Namegp')?.errors && usergroup.get('Namegp')?.dirty || userform.submitted ">
+    
+    <span class="text-danger" [hidden]="!usergroup.get('Namegp')?.errors?.required">required </span>
+
+
+</span>
+</div>
+
+<div class="form-group col-sm-6 my-3">
+    <label>Password :</label>
+    <input type="text" class="form-control" formControlName="passwordgp">
+
+
+</div>
+
+<div class="">
+    <input type="submit" class="btn btn-primary" value="submit">
+</div>
+</form>
+</div>

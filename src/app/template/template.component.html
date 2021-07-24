@@ -1,0 +1,131 @@
+<div class="container-fluid ">
+    <h2 class="text-center mb-5">Template Form</h2>
+  
+    <form #userForm="ngForm" autocomplete="off"  novalidate>
+    <div class="form-group">
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+        <label>Name:</label></div>
+        <div class="col-md-9">
+        <input type="text" #name="ngModel" name="uname"  required  minlength="5" [(ngModel)]="user.name" 
+        class="form-control">  
+        
+        <div *ngIf="name.errors && (name.dirty) ">
+            <small class="text-danger" [hidden]="!name.errors!.required">Name is required.</small>
+            <small class="text-danger" [hidden]="!name.errors!.minlength">minimun range is 5.</small>
+        </div>
+        
+    
+           
+    </div>
+        </div>
+       
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 row  mb-3">
+        <div class="col-md-3">
+        <label>Email:</label></div>
+        <div class="col-md-9">
+        <input type="text" #email="ngModel" name="uemail" 
+      
+        [(ngModel)]="user.email" class="form-control" required>
+         
+         <div *ngIf="email.errors && email.dirty">
+            <small class="text-danger" [hidden]="!email.errors!.required">email is required.</small>
+         </div>
+
+
+    </div>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+        <label>Password:</label></div>
+        <div class="col-md-9">
+        <input type="text" #password="ngModel" name="password"
+        appCustompasswordValidator="confirmPassword"
+        [(ngModel)]="user.password"  class="form-control" required>
+          
+        <div *ngIf="password.errors && (password.dirty)">
+            <small class="text-danger" [hidden]="!password.errors!.required">password is required.</small>
+            <small class="text-danger" 
+            [hidden]="(password.touched && password.errors!.notEqual && confirmPassword.errors!.required)">password is required.</small>
+
+         </div>
+    </div>
+       
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+        <label>Confirm Password:</label></div>
+        <div class="col-md-9">
+        <input type="text" #confirmPassword="ngModel" name="confirmpassword"  appCustompasswordValidator="password"        
+        [(ngModel)]="user.confirmPassword" class="form-control" required>
+         
+        <div *ngIf="confirmPassword.errors && (confirmPassword.dirty)">
+            <small class="text-danger" 
+            [hidden]="!confirmPassword.errors!.required">Confirm Password is required.</small>
+         </div>
+    </div>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+        <label>Contact:</label></div>
+        <div class="col-md-9">
+        <input type="text"  #contact="ngModel"       
+        [(ngModel)]="user.contact" name="contact"  class="form-control" required>
+       
+          
+        <div *ngIf="contact.errors && (contact.dirty)">
+            <small class="text-danger" [hidden]="!contact.errors!.required">Contact is required.</small>
+         </div>
+    </div>
+        </div>
+        
+    </div>
+    <div class="check-group">
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+            <label class="check-label">Term and Conditions:</label>
+           </div>
+        <div class="col-md-9">
+            <input type="checkbox" #term = "ngModel" [(ngModel)]="user.terms"        
+            name="terms"  class="check-input" required>
+             
+        <div *ngIf="term.errors && (term.dirty)">
+            <small class="text-danger" [hidden]="!term.errors!.required">Term and Condition is required.</small>
+         </div>
+    </div>
+        </div>
+        
+    </div>
+    <div >
+        <div class="col-md-6 row mb-3">
+        <div class="col-md-3">
+           
+
+           </div>
+        <div class="col-md-9">
+            <button class="btn btn-primary mx-3" [disabled]="!userForm.valid">Submit</button>
+            <button class="btn btn-secondary">Reset</button>
+      
+    </div>
+        </div>
+        
+    </div>
+</form>
+
+<div>
+    List of Details
+</div>
+</div>
+
+
