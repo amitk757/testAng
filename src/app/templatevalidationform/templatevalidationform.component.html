@@ -2,21 +2,15 @@
 <div class="container">
 <h2 class="text-center">Template Validation Form</h2>
 
-<form action="" novalidate autocomplete="off" #f="ngForm">    
+<form action="" novalidate autocomplete="off" #f="ngForm" >    
 <div class="form-group my-3">
     <label>First Name </label>
-    <input type="text" name="fname" [class.is-invalid]="(f.submitted && tempFname.invalid) || (tempFname.invalid && tempFname.touched)" 
+    <input type="text"  name="fname" value={{name}} [class.is-invalid]="(f.submitted && tempFname.invalid) || (tempFname.invalid && tempFname.touched)" 
     #tempFname="ngModel"  
     class="form-control" required [(ngModel)]="registration_model.first_name" > 
 
-
-
-    <small> touched: {{tempFname.touched}}    untouched: {{tempFname.untouched}} </small><br/>
-    <small> dirty: {{tempFname.dirty}}        pristine: {{tempFname.pristine}}</small><br/>
-    <small> valid: {{tempFname.valid}}        Invalid: {{tempFname.invalid}} </small><br/>
-    {{f.submitted}}
 <div *ngIf="(f.submitted && tempFname.invalid) || (tempFname.invalid && tempFname.touched)">
-<small class="text-danger">First Name is required</small>
+<small [class.text-danger]="tempFname.errors?.required">First Name is required</small>
 </div>
 </div>
 <div class="form-group my-3">
@@ -41,9 +35,10 @@
     <label>Password </label>
     <input type="text" name="ppassword" 
     [class.is-invalid]="(f.submitted && tempPassword.invalid) || (tempPassword.invalid && tempPassword.touched)"
-    #tempPassword="ngModel" class="form-control" required [(ngModel)]="registration_model._password"> 
+    #tempPassword="ngModel" class="form-control" minlength="5" required [(ngModel)]="registration_model._password"> 
 <div *ngIf="(f.submitted && tempPassword.invalid) || (tempPassword.invalid && tempPassword.touched)">
-<small class="text-danger">Password is required</small>
+<small class="text-danger" *ngIf="tempPassword.errors?.required">Password is required</small>
+<small class="text-danger" *ngIf="tempPassword.errors?.minlength">Password must be at least 5 characters</small>
 </div>
 </div>
 
@@ -63,7 +58,7 @@
     #tempTerms="ngModel"  class="form-check-input " required [(ngModel)]="registration_model.terms_conditions"> 
     <label class="form-check-label">Terms and Conditions </label>   
     <div *ngIf="(f.submitted && tempTerms.invalid) || (tempTerms.invalid && tempTerms.touched)">
-        <small class="text-danger">Confirm Password is required</small>
+    <small class="text-danger">Confirm Password is required</small>
         </div>
 <div >
 
@@ -75,7 +70,12 @@
     <input type="submit" name="" id="" class="btn btn-secondary mx-2" value="Reset"> 
 </div>
 
+{{f.value|json}}
+<label>{{name}}</label>
+<input  type="text" value={{name}}>
 
+<a [href]="url">go to google</a>
+<button (click)="greet()">Hey!</button>
 </form>
 </div>
 

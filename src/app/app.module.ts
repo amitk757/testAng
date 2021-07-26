@@ -11,6 +11,8 @@ import { ComparepasswordComponent } from './comparepassword/comparepassword.comp
 import { ComparepasswordwithtempComponent } from './comparepasswordwithtemp/comparepasswordwithtemp.component';
 import { TemplatevalidationformComponent } from './templatevalidationform/templatevalidationform.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { TemplatevalidationformComponent } from './templatevalidationform/templa
     ComparepasswordComponent,
     ComparepasswordwithtempComponent,
    TemplatevalidationformComponent
+   
   ],
   imports: [
     BrowserModule,

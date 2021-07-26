@@ -6,14 +6,19 @@ import { registration } from '../Models/registration';
   templateUrl: './templatevalidationform.component.html',
   styleUrls: ['./templatevalidationform.component.css']
 })
-export class TemplatevalidationformComponent implements OnInit {
+export class TemplatevalidationformComponent  {
 
   registration_model:registration=new registration();
+  name:string="amit kumar";
+  url:string="https://www.google.com";
   constructor() {
     
    }
+
+   greet(){
+     alert(`Hi ${this.name}`);
+   }
   
-  ngOnInit(): void {
-  }
+ 
 
 }
